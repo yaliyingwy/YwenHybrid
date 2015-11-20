@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C9A194A1BFB8ADB003D4CD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A19491BFB8ADB003D4CD1 /* main.m */; };
+		4C9A194D1BFB8ADB003D4CD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A194C1BFB8ADB003D4CD1 /* AppDelegate.m */; };
+		4C9A19501BFB8ADB003D4CD1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A194F1BFB8ADB003D4CD1 /* ViewController.m */; };
+		4C9A19531BFB8ADB003D4CD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A19511BFB8ADB003D4CD1 /* Main.storyboard */; };
+		4C9A19551BFB8ADB003D4CD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A19541BFB8ADB003D4CD1 /* Assets.xcassets */; };
+		4C9A19581BFB8ADB003D4CD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A19561BFB8ADB003D4CD1 /* LaunchScreen.storyboard */; };
+		4C9A19631BFB8ADB003D4CD1 /* YwenHybridIosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A19621BFB8ADB003D4CD1 /* YwenHybridIosTests.m */; };
+		4C9A196E1BFB8ADB003D4CD1 /* YwenHybridIosUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A196D1BFB8ADB003D4CD1 /* YwenHybridIosUITests.m */; };
+		4C9A19931BFB9214003D4CD1 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 4C9A19921BFB9214003D4CD1 /* www */; };
+		4C9A19961BFB9464003D4CD1 /* YwenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A19951BFB9464003D4CD1 /* YwenViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4C9A195F1BFB8ADB003D4CD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C9A193D1BFB8ADB003D4CD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C9A19441BFB8ADB003D4CD1;
+			remoteInfo = YwenHybridIos;
+		};
+		4C9A196A1BFB8ADB003D4CD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C9A193D1BFB8ADB003D4CD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C9A19441BFB8ADB003D4CD1;
+			remoteInfo = YwenHybridIos;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4C9A19451BFB8ADB003D4CD1 /* YwenHybridIos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YwenHybridIos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C9A19491BFB8ADB003D4CD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4C9A194B1BFB8ADB003D4CD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4C9A194C1BFB8ADB003D4CD1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4C9A194E1BFB8ADB003D4CD1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4C9A194F1BFB8ADB003D4CD1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4C9A19521BFB8ADB003D4CD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4C9A19541BFB8ADB003D4CD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C9A19571BFB8ADB003D4CD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4C9A19591BFB8ADB003D4CD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C9A195E1BFB8ADB003D4CD1 /* YwenHybridIosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YwenHybridIosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C9A19621BFB8ADB003D4CD1 /* YwenHybridIosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YwenHybridIosTests.m; sourceTree = "<group>"; };
+		4C9A19641BFB8ADB003D4CD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C9A19691BFB8ADB003D4CD1 /* YwenHybridIosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YwenHybridIosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C9A196D1BFB8ADB003D4CD1 /* YwenHybridIosUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YwenHybridIosUITests.m; sourceTree = "<group>"; };
+		4C9A196F1BFB8ADB003D4CD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C9A19921BFB9214003D4CD1 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		4C9A19941BFB9464003D4CD1 /* YwenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YwenViewController.h; path = classes/YwenViewController.h; sourceTree = "<group>"; };
+		4C9A19951BFB9464003D4CD1 /* YwenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YwenViewController.m; path = classes/YwenViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C9A19421BFB8ADB003D4CD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9A195B1BFB8ADB003D4CD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9A19661BFB8ADB003D4CD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C9A193C1BFB8ADB003D4CD1 = {
+			isa = PBXGroup;
+			children = (
+				4C9A19471BFB8ADB003D4CD1 /* YwenHybridIos */,
+				4C9A19611BFB8ADB003D4CD1 /* YwenHybridIosTests */,
+				4C9A196C1BFB8ADB003D4CD1 /* YwenHybridIosUITests */,
+				4C9A19461BFB8ADB003D4CD1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4C9A19461BFB8ADB003D4CD1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C9A19451BFB8ADB003D4CD1 /* YwenHybridIos.app */,
+				4C9A195E1BFB8ADB003D4CD1 /* YwenHybridIosTests.xctest */,
+				4C9A19691BFB8ADB003D4CD1 /* YwenHybridIosUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C9A19471BFB8ADB003D4CD1 /* YwenHybridIos */ = {
+			isa = PBXGroup;
+			children = (
+				4C9A19921BFB9214003D4CD1 /* www */,
+				4C9A197B1BFB8B5D003D4CD1 /* classes */,
+				4C9A194B1BFB8ADB003D4CD1 /* AppDelegate.h */,
+				4C9A194C1BFB8ADB003D4CD1 /* AppDelegate.m */,
+				4C9A194E1BFB8ADB003D4CD1 /* ViewController.h */,
+				4C9A194F1BFB8ADB003D4CD1 /* ViewController.m */,
+				4C9A19511BFB8ADB003D4CD1 /* Main.storyboard */,
+				4C9A19541BFB8ADB003D4CD1 /* Assets.xcassets */,
+				4C9A19561BFB8ADB003D4CD1 /* LaunchScreen.storyboard */,
+				4C9A19591BFB8ADB003D4CD1 /* Info.plist */,
+				4C9A19481BFB8ADB003D4CD1 /* Supporting Files */,
+			);
+			path = YwenHybridIos;
+			sourceTree = "<group>";
+		};
+		4C9A19481BFB8ADB003D4CD1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4C9A19491BFB8ADB003D4CD1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C9A19611BFB8ADB003D4CD1 /* YwenHybridIosTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C9A19621BFB8ADB003D4CD1 /* YwenHybridIosTests.m */,
+				4C9A19641BFB8ADB003D4CD1 /* Info.plist */,
+			);
+			path = YwenHybridIosTests;
+			sourceTree = "<group>";
+		};
+		4C9A196C1BFB8ADB003D4CD1 /* YwenHybridIosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4C9A196D1BFB8ADB003D4CD1 /* YwenHybridIosUITests.m */,
+				4C9A196F1BFB8ADB003D4CD1 /* Info.plist */,
+			);
+			path = YwenHybridIosUITests;
+			sourceTree = "<group>";
+		};
+		4C9A197B1BFB8B5D003D4CD1 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				4C9A19941BFB9464003D4CD1 /* YwenViewController.h */,
+				4C9A19951BFB9464003D4CD1 /* YwenViewController.m */,
+			);
+			name = classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C9A19441BFB8ADB003D4CD1 /* YwenHybridIos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C9A19721BFB8ADB003D4CD1 /* Build configuration list for PBXNativeTarget "YwenHybridIos" */;
+			buildPhases = (
+				4C9A19411BFB8ADB003D4CD1 /* Sources */,
+				4C9A19421BFB8ADB003D4CD1 /* Frameworks */,
+				4C9A19431BFB8ADB003D4CD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YwenHybridIos;
+			productName = YwenHybridIos;
+			productReference = 4C9A19451BFB8ADB003D4CD1 /* YwenHybridIos.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4C9A195D1BFB8ADB003D4CD1 /* YwenHybridIosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C9A19751BFB8ADB003D4CD1 /* Build configuration list for PBXNativeTarget "YwenHybridIosTests" */;
+			buildPhases = (
+				4C9A195A1BFB8ADB003D4CD1 /* Sources */,
+				4C9A195B1BFB8ADB003D4CD1 /* Frameworks */,
+				4C9A195C1BFB8ADB003D4CD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C9A19601BFB8ADB003D4CD1 /* PBXTargetDependency */,
+			);
+			name = YwenHybridIosTests;
+			productName = YwenHybridIosTests;
+			productReference = 4C9A195E1BFB8ADB003D4CD1 /* YwenHybridIosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4C9A19681BFB8ADB003D4CD1 /* YwenHybridIosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C9A19781BFB8ADB003D4CD1 /* Build configuration list for PBXNativeTarget "YwenHybridIosUITests" */;
+			buildPhases = (
+				4C9A19651BFB8ADB003D4CD1 /* Sources */,
+				4C9A19661BFB8ADB003D4CD1 /* Frameworks */,
+				4C9A19671BFB8ADB003D4CD1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C9A196B1BFB8ADB003D4CD1 /* PBXTargetDependency */,
+			);
+			name = YwenHybridIosUITests;
+			productName = YwenHybridIosUITests;
+			productReference = 4C9A19691BFB8ADB003D4CD1 /* YwenHybridIosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C9A193D1BFB8ADB003D4CD1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = ywen;
+				TargetAttributes = {
+					4C9A19441BFB8ADB003D4CD1 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					4C9A195D1BFB8ADB003D4CD1 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 4C9A19441BFB8ADB003D4CD1;
+					};
+					4C9A19681BFB8ADB003D4CD1 = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 4C9A19441BFB8ADB003D4CD1;
+					};
+				};
+			};
+			buildConfigurationList = 4C9A19401BFB8ADB003D4CD1 /* Build configuration list for PBXProject "YwenHybridIos" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4C9A193C1BFB8ADB003D4CD1;
+			productRefGroup = 4C9A19461BFB8ADB003D4CD1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C9A19441BFB8ADB003D4CD1 /* YwenHybridIos */,
+				4C9A195D1BFB8ADB003D4CD1 /* YwenHybridIosTests */,
+				4C9A19681BFB8ADB003D4CD1 /* YwenHybridIosUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C9A19431BFB8ADB003D4CD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C9A19931BFB9214003D4CD1 /* www in Resources */,
+				4C9A19581BFB8ADB003D4CD1 /* LaunchScreen.storyboard in Resources */,
+				4C9A19551BFB8ADB003D4CD1 /* Assets.xcassets in Resources */,
+				4C9A19531BFB8ADB003D4CD1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9A195C1BFB8ADB003D4CD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9A19671BFB8ADB003D4CD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C9A19411BFB8ADB003D4CD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C9A19961BFB9464003D4CD1 /* YwenViewController.m in Sources */,
+				4C9A19501BFB8ADB003D4CD1 /* ViewController.m in Sources */,
+				4C9A194D1BFB8ADB003D4CD1 /* AppDelegate.m in Sources */,
+				4C9A194A1BFB8ADB003D4CD1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9A195A1BFB8ADB003D4CD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C9A19631BFB8ADB003D4CD1 /* YwenHybridIosTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9A19651BFB8ADB003D4CD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C9A196E1BFB8ADB003D4CD1 /* YwenHybridIosUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4C9A19601BFB8ADB003D4CD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C9A19441BFB8ADB003D4CD1 /* YwenHybridIos */;
+			targetProxy = 4C9A195F1BFB8ADB003D4CD1 /* PBXContainerItemProxy */;
+		};
+		4C9A196B1BFB8ADB003D4CD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C9A19441BFB8ADB003D4CD1 /* YwenHybridIos */;
+			targetProxy = 4C9A196A1BFB8ADB003D4CD1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4C9A19511BFB8ADB003D4CD1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C9A19521BFB8ADB003D4CD1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4C9A19561BFB8ADB003D4CD1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C9A19571BFB8ADB003D4CD1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4C9A19701BFB8ADB003D4CD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4C9A19711BFB8ADB003D4CD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C9A19731BFB8ADB003D4CD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = YwenHybridIos/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ywen.YwenHybridIos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4C9A19741BFB8ADB003D4CD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = YwenHybridIos/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ywen.YwenHybridIos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4C9A19761BFB8ADB003D4CD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = YwenHybridIosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ywen.YwenHybridIosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YwenHybridIos.app/YwenHybridIos";
+			};
+			name = Debug;
+		};
+		4C9A19771BFB8ADB003D4CD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = YwenHybridIosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ywen.YwenHybridIosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YwenHybridIos.app/YwenHybridIos";
+			};
+			name = Release;
+		};
+		4C9A19791BFB8ADB003D4CD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = YwenHybridIosUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ywen.YwenHybridIosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = YwenHybridIos;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		4C9A197A1BFB8ADB003D4CD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = YwenHybridIosUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ywen.YwenHybridIosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = YwenHybridIos;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C9A19401BFB8ADB003D4CD1 /* Build configuration list for PBXProject "YwenHybridIos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C9A19701BFB8ADB003D4CD1 /* Debug */,
+				4C9A19711BFB8ADB003D4CD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C9A19721BFB8ADB003D4CD1 /* Build configuration list for PBXNativeTarget "YwenHybridIos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C9A19731BFB8ADB003D4CD1 /* Debug */,
+				4C9A19741BFB8ADB003D4CD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C9A19751BFB8ADB003D4CD1 /* Build configuration list for PBXNativeTarget "YwenHybridIosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C9A19761BFB8ADB003D4CD1 /* Debug */,
+				4C9A19771BFB8ADB003D4CD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C9A19781BFB8ADB003D4CD1 /* Build configuration list for PBXNativeTarget "YwenHybridIosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C9A19791BFB8ADB003D4CD1 /* Debug */,
+				4C9A197A1BFB8ADB003D4CD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4C9A193D1BFB8ADB003D4CD1 /* Project object */;
+}
