@@ -15,12 +15,12 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "YwenHybridIos"
+  s.name         = "YwenHybrid"
   s.version      = "0.0.1"
   s.summary      = "ios part of YwenHybrid lib, please use with ywen-hybrid-js"
 
   s.description  = <<-DESC
-                   A longer description of YwenHybridIos in Markdown format.
+                   A longer description of YwenHybrid in Markdown format.
 
                    * Think: Why did you write this? What is the focus? What does it do?
                    * CocoaPods will be using this to generate tags, and improve search results.
