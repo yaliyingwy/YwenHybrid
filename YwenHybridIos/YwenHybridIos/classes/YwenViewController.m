@@ -21,6 +21,8 @@
     _webView = [UIWebView new];
     _webView.frame = self.view.bounds;
     _webView.delegate = self;
+    
+     self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.view addSubview:_webView];
 }
 
@@ -60,6 +62,20 @@
     NSLog(@"tag: %@, params: %@, callback: %@", tag, params, callback);
     
     
+}
+
+-(void)releaseWebView {
+    [_webView loadHTMLString:@"" baseURL:nil];
+    [_webView stopLoading];
+    _webView.delegate = nil;
+    [_webView removeFromSuperview];
+    self.webView = nil;
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    if ([self isMovingFromParentViewController] || [self isBeingDismissed]) {
+        [self releaseWebView];
+    }
 }
 
 -(void)callJS:(NSString *)msg {

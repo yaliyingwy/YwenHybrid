@@ -20,5 +20,6 @@
 @property (strong, nonatomic) NSString *htmlPath;
 
 -(void) callJS:(NSString *) msg;
+-(void) releaseWebView;
 
 @end
