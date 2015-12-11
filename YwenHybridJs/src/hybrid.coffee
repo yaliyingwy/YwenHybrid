@@ -34,7 +34,7 @@ _callNative = (msg, params, success, err)->
 	_execIframe.src = url
 
 _messageFromNative = (msg)->
-	window.ywenHybrid?.messageHandler?(msg)
+	window.ywenHybrid?.messageHandler?(JSON.parse(msg))
 
 window.ywenHybrid.callJs = _messageFromNative
 

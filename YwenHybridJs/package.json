@@ -1,6 +1,6 @@
 {
   "name": "ywen-hybrid-js",
-  "version": "0.0.3",
+  "version": "0.0.8",
   "description": "a js lib for communicate with native ios and android",
   "main": "index.js",
   "scripts": {

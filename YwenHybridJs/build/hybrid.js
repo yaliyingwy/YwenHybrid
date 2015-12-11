@@ -55,7 +55,7 @@
 
   _messageFromNative = function(msg) {
     var ref;
-    return (ref = window.ywenHybrid) != null ? typeof ref.messageHandler === "function" ? ref.messageHandler(msg) : void 0 : void 0;
+    return (ref = window.ywenHybrid) != null ? typeof ref.messageHandler === "function" ? ref.messageHandler(JSON.parse(msg)) : void 0 : void 0;
   };
 
   window.ywenHybrid.callJs = _messageFromNative;
