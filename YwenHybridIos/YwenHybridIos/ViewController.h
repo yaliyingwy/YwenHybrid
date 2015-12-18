@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "YwenViewController.h"
 
-@interface ViewController : YwenViewController
+@interface ViewController : YwenViewController <HybridNavDelegate, HybridUIDelegate>
 
 
 @end

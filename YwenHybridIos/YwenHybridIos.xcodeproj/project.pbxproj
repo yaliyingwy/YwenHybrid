@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D5DC90E5ABC887654E452EC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9A240F43F3AB3BEDDFFD7E /* libPods.a */; };
+		4C51FEEE1C17DEBD002B7044 /* NSDictionary+YwenJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51FEED1C17DEBD002B7044 /* NSDictionary+YwenJson.m */; };
+		4C51FEF11C199948002B7044 /* HelloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51FEF01C199948002B7044 /* HelloViewController.m */; };
+		4C51FEF41C1999F9002B7044 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51FEF31C1999F9002B7044 /* IndexViewController.m */; };
 		4C9A194A1BFB8ADB003D4CD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A19491BFB8ADB003D4CD1 /* main.m */; };
 		4C9A194D1BFB8ADB003D4CD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A194C1BFB8ADB003D4CD1 /* AppDelegate.m */; };
 		4C9A19501BFB8ADB003D4CD1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A194F1BFB8ADB003D4CD1 /* ViewController.m */; };
@@ -37,6 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A9A240F43F3AB3BEDDFFD7E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C51FEEC1C17DEBD002B7044 /* NSDictionary+YwenJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+YwenJson.h"; path = "classes/NSDictionary+YwenJson.h"; sourceTree = "<group>"; };
+		4C51FEED1C17DEBD002B7044 /* NSDictionary+YwenJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+YwenJson.m"; path = "classes/NSDictionary+YwenJson.m"; sourceTree = "<group>"; };
+		4C51FEEF1C199948002B7044 /* HelloViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloViewController.h; sourceTree = "<group>"; };
+		4C51FEF01C199948002B7044 /* HelloViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloViewController.m; sourceTree = "<group>"; };
+		4C51FEF21C1999F9002B7044 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
+		4C51FEF31C1999F9002B7044 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
 		4C9A19451BFB8ADB003D4CD1 /* YwenHybridIos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YwenHybridIos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9A19491BFB8ADB003D4CD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C9A194B1BFB8ADB003D4CD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,6 +67,8 @@
 		4C9A19921BFB9214003D4CD1 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		4C9A19941BFB9464003D4CD1 /* YwenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YwenViewController.h; path = classes/YwenViewController.h; sourceTree = "<group>"; };
 		4C9A19951BFB9464003D4CD1 /* YwenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YwenViewController.m; path = classes/YwenViewController.m; sourceTree = "<group>"; };
+		A4663F8F5EADA84479713B9B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D5F257ACE5E271692D54352B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D5DC90E5ABC887654E452EC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +97,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0189DF0B23AF94B3A5135535 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4663F8F5EADA84479713B9B /* Pods.debug.xcconfig */,
+				D5F257ACE5E271692D54352B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4C9A193C1BFB8ADB003D4CD1 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +113,8 @@
 				4C9A19611BFB8ADB003D4CD1 /* YwenHybridIosTests */,
 				4C9A196C1BFB8ADB003D4CD1 /* YwenHybridIosUITests */,
 				4C9A19461BFB8ADB003D4CD1 /* Products */,
+				0189DF0B23AF94B3A5135535 /* Pods */,
+				DF71DAA60841BF3ACD749A2F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +137,10 @@
 				4C9A194C1BFB8ADB003D4CD1 /* AppDelegate.m */,
 				4C9A194E1BFB8ADB003D4CD1 /* ViewController.h */,
 				4C9A194F1BFB8ADB003D4CD1 /* ViewController.m */,
+				4C51FEF21C1999F9002B7044 /* IndexViewController.h */,
+				4C51FEF31C1999F9002B7044 /* IndexViewController.m */,
+				4C51FEEF1C199948002B7044 /* HelloViewController.h */,
+				4C51FEF01C199948002B7044 /* HelloViewController.m */,
 				4C9A19511BFB8ADB003D4CD1 /* Main.storyboard */,
 				4C9A19541BFB8ADB003D4CD1 /* Assets.xcassets */,
 				4C9A19561BFB8ADB003D4CD1 /* LaunchScreen.storyboard */,
@@ -151,9 +180,19 @@
 			isa = PBXGroup;
 			children = (
 				4C9A19941BFB9464003D4CD1 /* YwenViewController.h */,
+				4C51FEEC1C17DEBD002B7044 /* NSDictionary+YwenJson.h */,
+				4C51FEED1C17DEBD002B7044 /* NSDictionary+YwenJson.m */,
 				4C9A19951BFB9464003D4CD1 /* YwenViewController.m */,
 			);
 			name = classes;
+			sourceTree = "<group>";
+		};
+		DF71DAA60841BF3ACD749A2F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A9A240F43F3AB3BEDDFFD7E /* libPods.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,9 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C9A19721BFB8ADB003D4CD1 /* Build configuration list for PBXNativeTarget "YwenHybridIos" */;
 			buildPhases = (
+				18665339C801678F65879825 /* Check Pods Manifest.lock */,
 				4C9A19411BFB8ADB003D4CD1 /* Sources */,
 				4C9A19421BFB8ADB003D4CD1 /* Frameworks */,
 				4C9A19431BFB8ADB003D4CD1 /* Resources */,
+				144BEE317F31301560CCBDBC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,13 +323,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		144BEE317F31301560CCBDBC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		18665339C801678F65879825 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4C9A19411BFB8ADB003D4CD1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C51FEEE1C17DEBD002B7044 /* NSDictionary+YwenJson.m in Sources */,
+				4C51FEF41C1999F9002B7044 /* IndexViewController.m in Sources */,
 				4C9A19961BFB9464003D4CD1 /* YwenViewController.m in Sources */,
 				4C9A19501BFB8ADB003D4CD1 /* ViewController.m in Sources */,
+				4C51FEF11C199948002B7044 /* HelloViewController.m in Sources */,
 				4C9A194D1BFB8ADB003D4CD1 /* AppDelegate.m in Sources */,
 				4C9A194A1BFB8ADB003D4CD1 /* main.m in Sources */,
 			);
@@ -427,6 +504,7 @@
 		};
 		4C9A19731BFB8ADB003D4CD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4663F8F5EADA84479713B9B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YwenHybridIos/Info.plist;
@@ -438,6 +516,7 @@
 		};
 		4C9A19741BFB8ADB003D4CD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5F257ACE5E271692D54352B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YwenHybridIos/Info.plist;

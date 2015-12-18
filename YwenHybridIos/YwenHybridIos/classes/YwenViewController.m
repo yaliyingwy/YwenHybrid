@@ -7,6 +7,7 @@
 //
 
 #import "YwenViewController.h"
+#import "NSDictionary+YwenJson.h"
 
 @interface YwenViewController ()
 
@@ -21,6 +22,7 @@
     _webView = [UIWebView new];
     _webView.frame = self.view.bounds;
     _webView.delegate = self;
+    
     
      self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.view addSubview:_webView];
@@ -60,8 +62,56 @@
 -(void)callFromJs:(NSString *)tag params:(NSDictionary *)params callback:(NSString *)callback {
     
     NSLog(@"tag: %@, params: %@, callback: %@", tag, params, callback);
+    if ([tag isEqualToString:@"pop"]) {
+        [self.hybridNav navPop:[[params objectForKey:@"index"] integerValue]];
+    }
+    else if ([tag isEqualToString:@"push"])
+    {
+        [self.hybridNav navPush:params callback:callback];
+    }
+    else if ([tag isEqualToString:@"alert"])
+    {
+        [self.hybridUI alert:params callback:callback];
+    }
+    else if ([tag isEqualToString:@"loading"])
+    {
+        [self.hybridUI loading:params];
+    }
+    else if ([tag isEqualToString:@"toast"])
+    {
+        [self.hybridUI toast:params];
+    }
     
     
+}
+
+
+-(void)success:(NSString *)callback params:(NSDictionary *)params {
+    NSString *js;
+    if (params != nil) {
+        NSDictionary *paramDic = @{
+                                   @"code": @"0000",
+                                   @"params": params
+                                   };
+        NSString *json = [paramDic ywenJson];
+        js = [NSString stringWithFormat:@"(function(){window.ywenHybrid.cbs['%@']('%@')})()", callback, json];
+    }
+    else
+    {
+        js = [NSString stringWithFormat:@"(function(){window.ywenHybrid.cbs['%@']()})()", callback];
+    }
+   
+    [self.webView stringByEvaluatingJavaScriptFromString:js];
+}
+
+-(void)error:(NSString *)callback error:(NSString *)error {
+    NSDictionary *paramDic = @{
+                               @"code": @"0001",
+                               @"error": error ? error : @"error"
+                               };
+    NSString *json = [paramDic ywenJson];
+    NSString *js = [NSString stringWithFormat:@"(function(){window.ywenHybrid.cbs['%@']('%@')})()", callback, json];
+    [self.webView stringByEvaluatingJavaScriptFromString:js];
 }
 
 -(void)releaseWebView {
@@ -78,9 +128,11 @@
     }
 }
 
--(void)callJS:(NSString *)msg {
+-(void)callJS:(NSDictionary *)params {
+    NSString *msg = [params ywenJson];
     [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"ywenHybrid.callJs('%@')", msg]];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

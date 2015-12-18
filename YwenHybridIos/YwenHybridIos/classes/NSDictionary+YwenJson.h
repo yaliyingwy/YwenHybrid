@@ -10,4 +10,6 @@
 
 @interface NSDictionary (YwenJson)
 
+-(NSString *) ywenJson;
+
 @end

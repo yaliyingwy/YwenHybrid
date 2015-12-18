@@ -1,0 +1,10 @@
+PODS:
+  - YwenKit (0.4.6)
+
+DEPENDENCIES:
+  - YwenKit
+
+SPEC CHECKSUMS:
+  YwenKit: f32cfa987b23cd09edb42d859f925dc2c01093e3
+
+COCOAPODS: 0.38.2

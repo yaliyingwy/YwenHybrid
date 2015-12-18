@@ -10,4 +10,9 @@
 
 @implementation NSDictionary (YwenJson)
 
+-(NSString *)ywenJson {
+    NSString *json = [[NSString alloc] initWithData: [NSJSONSerialization dataWithJSONObject:self options:0 error:nil] encoding:NSUTF8StringEncoding];
+    return json;
+}
+
 @end

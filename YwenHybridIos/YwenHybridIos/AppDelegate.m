@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "IndexViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +22,7 @@
      CGRect screenBounds = [[UIScreen mainScreen] bounds];
     
     self.window = [[UIWindow alloc] initWithFrame:screenBounds];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ViewController new]];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[IndexViewController new]];
     [self.window makeKeyAndVisible];
     return YES;
 }
