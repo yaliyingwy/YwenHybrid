@@ -68,6 +68,10 @@ public class MainActivity extends ActionBarActivity implements HybridCore {
         {
             this.hybridUI.loading(this, params);
         }
+        else if ("alert".equals(tag))
+        {
+            this.hybridUI.alert(this, webView, params, callback);
+        }
         else
         {
             Map<String, Object> paramMap = new HashMap<String, Object>();

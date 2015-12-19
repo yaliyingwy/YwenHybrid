@@ -1,5 +1,6 @@
 package ywen.com.hybrid;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,7 +59,48 @@ public class HybridUIImpl implements HybridUI {
 
     static  Handler handler = new HybridHandler();
     @Override
-    public void alert(HybridWebView webView, JSONObject params, String callback) {
+    public void alert(Context context, final HybridWebView webView, JSONObject params, final String callback) {
+        String title = "提示", msg ="";
+        String[] btns = {"确定", "取消"};
+        try {
+            title = params.getString("title");
+            msg = params.getString("msg");
+            JSONArray btnArr = params.getJSONArray("btns");
+
+            for (int i = 0; i < btnArr.length(); i++) {
+                btns[i] = btnArr.getString(i);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        finally {
+            AlertDialog.Builder dlg = new AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT); // new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+            dlg.setMessage(msg);
+            dlg.setTitle(title);
+            dlg.setCancelable(true);
+            dlg.setPositiveButton(btns[0],
+                    new AlertDialog.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            webView.success(callback, null);
+                        }
+                    });
+            dlg.setOnCancelListener(new AlertDialog.OnCancelListener() {
+                public void onCancel(DialogInterface dialog) {
+                    dialog.dismiss();
+                    webView.error(callback, "user canceled");
+                }
+            });
+
+            dlg.setNegativeButton(btns[1],
+                    new AlertDialog.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            webView.error(callback, "cancel");
+                        }
+                    });
+            dlg.show();
+        }
 
     }
 
@@ -162,6 +205,7 @@ public class HybridUIImpl implements HybridUI {
         toast.setGravity(Gravity.CENTER, 0, 0);
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(img);
+
         LinearLayout toastView = (LinearLayout) toast.getView();
         toastView.addView(imageView, 0);
         toast.show();
