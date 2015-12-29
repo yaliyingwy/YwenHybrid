@@ -8,7 +8,7 @@ push = (page, param, success, err)->
 
 pop = (index)->
 	paramDic = {}
-	paramDic.index = index or 0
+	paramDic.index = index or 1
 	Hybrid.exec 'pop', paramDic, null, null
 
 module.exports = {

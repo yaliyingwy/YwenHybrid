@@ -39,8 +39,8 @@
 
 -(void)navPop:(NSInteger)index {
     NSInteger vcCount = self.navigationController.viewControllers.count;
-    if (index < vcCount - 1) {
-        UIViewController *toVC = self.navigationController.viewControllers[vcCount - 2 - index];
+    if (index < vcCount) {
+        UIViewController *toVC = self.navigationController.viewControllers[vcCount - 1 - index];
         [self.navigationController popToViewController:toVC animated:YES];
     }
     else
