@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YwenHybrid"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "ios part of YwenHybrid lib, please use with ywen-hybrid-js"
 
   s.description  = <<-DESC
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/yaliyingwy/YwenHybrid.git", :tag => "0.0.3" }
+  s.source       = { :git => "https://github.com/yaliyingwy/YwenHybrid.git", :tag => "0.0.4" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
