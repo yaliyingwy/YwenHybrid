@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @protocol HybridDelegate <NSObject>
 
 @required
 -(void) callFromJs:(NSString *) tag params:(NSDictionary *) params callback:(NSString *) callback;
+
+@required
 
 
 

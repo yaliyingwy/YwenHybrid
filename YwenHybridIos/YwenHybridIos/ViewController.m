@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HelloViewController.h"
 #import <YwenKit.h>
+#import "HotUpdateManager.h"
 
 @interface ViewController ()
 
@@ -20,7 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.webView.backgroundColor = [UIColor redColor];
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html" inDirectory:@"www"];
+    NSString *path = [[HotUpdateManager wwwPath] stringByAppendingString:@"/index.html"];
     self.htmlPath = path;
     
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithTitle:@"calljs" style:UIBarButtonItemStyleDone target:self action:@selector(testCallJs)];

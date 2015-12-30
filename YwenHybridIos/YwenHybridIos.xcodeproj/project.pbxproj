@@ -11,6 +11,7 @@
 		4C51FEEE1C17DEBD002B7044 /* NSDictionary+YwenJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51FEED1C17DEBD002B7044 /* NSDictionary+YwenJson.m */; };
 		4C51FEF11C199948002B7044 /* HelloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51FEF01C199948002B7044 /* HelloViewController.m */; };
 		4C51FEF41C1999F9002B7044 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51FEF31C1999F9002B7044 /* IndexViewController.m */; };
+		4C6EF2D61C329C5C003255B0 /* HotUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6EF2D51C329C5C003255B0 /* HotUpdateManager.m */; };
 		4C9A194A1BFB8ADB003D4CD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A19491BFB8ADB003D4CD1 /* main.m */; };
 		4C9A194D1BFB8ADB003D4CD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A194C1BFB8ADB003D4CD1 /* AppDelegate.m */; };
 		4C9A19501BFB8ADB003D4CD1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A194F1BFB8ADB003D4CD1 /* ViewController.m */; };
@@ -48,6 +49,8 @@
 		4C51FEF01C199948002B7044 /* HelloViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloViewController.m; sourceTree = "<group>"; };
 		4C51FEF21C1999F9002B7044 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
 		4C51FEF31C1999F9002B7044 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
+		4C6EF2D41C329C5C003255B0 /* HotUpdateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotUpdateManager.h; path = classes/HotUpdateManager.h; sourceTree = "<group>"; };
+		4C6EF2D51C329C5C003255B0 /* HotUpdateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotUpdateManager.m; path = classes/HotUpdateManager.m; sourceTree = "<group>"; };
 		4C9A19451BFB8ADB003D4CD1 /* YwenHybridIos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YwenHybridIos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9A19491BFB8ADB003D4CD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C9A194B1BFB8ADB003D4CD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				4C9A19941BFB9464003D4CD1 /* YwenViewController.h */,
+				4C6EF2D41C329C5C003255B0 /* HotUpdateManager.h */,
+				4C6EF2D51C329C5C003255B0 /* HotUpdateManager.m */,
 				4C51FEEC1C17DEBD002B7044 /* NSDictionary+YwenJson.h */,
 				4C51FEED1C17DEBD002B7044 /* NSDictionary+YwenJson.m */,
 				4C9A19951BFB9464003D4CD1 /* YwenViewController.m */,
@@ -367,6 +372,7 @@
 				4C9A19501BFB8ADB003D4CD1 /* ViewController.m in Sources */,
 				4C51FEF11C199948002B7044 /* HelloViewController.m in Sources */,
 				4C9A194D1BFB8ADB003D4CD1 /* AppDelegate.m in Sources */,
+				4C6EF2D61C329C5C003255B0 /* HotUpdateManager.m in Sources */,
 				4C9A194A1BFB8ADB003D4CD1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4B34BEFBEDB2EFB7989E65C1"
-               BuildableName = "libYwenKit.a"
-               BlueprintName = "YwenKit"
+               BlueprintIdentifier = "F364E3B1D4F4128C480AF2C6"
+               BuildableName = "libZipArchive.a"
+               BlueprintName = "ZipArchive"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

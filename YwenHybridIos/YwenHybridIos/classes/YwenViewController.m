@@ -26,6 +26,7 @@
     
      self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.view addSubview:_webView];
+    
 }
 
 -(void)setHtmlPath:(NSString *)htmlPath {

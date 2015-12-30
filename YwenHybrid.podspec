@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YwenHybrid"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "ios part of YwenHybrid lib, please use with ywen-hybrid-js"
 
   s.description  = <<-DESC
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/yaliyingwy/YwenHybrid.git", :tag => "0.0.2" }
+  s.source       = { :git => "https://github.com/yaliyingwy/YwenHybrid.git", :tag => "0.0.3" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -131,7 +131,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  #s.dependency "NSXtensions" 
+  s.dependency 'ZipArchive', '~> 1.4.0' 
 
 end
 
