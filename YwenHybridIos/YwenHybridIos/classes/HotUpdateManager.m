@@ -7,7 +7,7 @@
 //
 
 #import "HotUpdateManager.h"
-#import <ZipArchive.h>
+#import "ZipArchive.h"
 
 
 @implementation HotUpdateManager
