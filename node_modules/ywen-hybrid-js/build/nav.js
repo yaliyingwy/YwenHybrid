@@ -14,7 +14,7 @@
   pop = function(index) {
     var paramDic;
     paramDic = {};
-    paramDic.index = index || 0;
+    paramDic.index = index || 1;
     return Hybrid.exec('pop', paramDic, null, null);
   };
 

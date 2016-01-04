@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ywen-hybrid-js": "0.0.9"
+    "ywen-hybrid-js": "0.1.2"
   },
   "devDependencies": {
     "coffee-script": "^1.10.0",

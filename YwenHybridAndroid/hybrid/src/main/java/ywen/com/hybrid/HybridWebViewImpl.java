@@ -1,16 +1,15 @@
 package ywen.com.hybrid;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,12 +68,22 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
 
     public HybridWebViewImpl(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.init();
+        this.init(context);
+
     }
 
-    public void init() {
+    public void init(Context context) {
         WebSettings settings = this.getSettings();
         settings.setJavaScriptEnabled(true);
+        settings.setDomStorageEnabled(true);
+
+        settings.setAllowFileAccess(true);
+
+        settings.setAppCacheEnabled(true);
+
+        final HybridInterface hybridInterface = new HybridInterface(this);
+        this.addJavascriptInterface(hybridInterface, "hybridAndroid");
+
 
         HybridWebViewClient hybridWebViewClient = new HybridWebViewClient();
         hybridWebViewClient.setHybridWebView(this);
@@ -82,49 +91,38 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
 
         this.setWebChromeClient(new HybridWebChromeClient());
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (0 != (context.getApplicationInfo().flags &= ApplicationInfo.FLAG_DEBUGGABLE))
+            { WebView.setWebContentsDebuggingEnabled(true); }
+        }
+
     }
 
 
     @Override
     public void parseUrl(String url) {
-        try {
-            url = URLDecoder.decode(url, "utf8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        if (url.startsWith("ywen")) {
-            String[] urlParts = url.split("\\?", 2);
-            String tag = urlParts[0].split("//", 2)[1];
-            String query = urlParts[1];
-            Log.d("url", String.format("tag %s   query %s", tag, query));
-
-            JSONObject params = null;
-            String callback = null;
-
-            for (String s : query.split("&")) {
-                if (s.contains("params")) {
-                    try {
-                        params = new JSONObject(s.split("=", 2)[1]);
-                    } catch (JSONException e) {
-                        Log.e("params", "not json format!!!");
-                        e.printStackTrace();
-                    }
-                }
-                else if (s.contains("callback"))
-                {
-                    callback = s.split("=", 2)[1];
-                }
-            }
-
-            this.callFromjs(tag, params, callback);
+        if ("ywen://new_msg".equals(url)) {
+            this.loadUrl("javascript:(function(){window.ywenHybrid.getMessageQueue()})()");
         }
     }
+
 
 
     public void callFromjs(String tag, JSONObject params, String callback) {
         Log.d("call from js:", String.format("tag %s  params %s callback %s", tag, params, callback));
 
         this.hybridCore.callFromjs(this, tag, params, callback);
+    }
+
+
+
+    public void loadUrlOnUIThread(final String url) {
+        this.post(new Runnable() {
+            @Override
+            public void run() {
+                loadUrl(url);
+            }
+        });
     }
 
     public void success(String callback, Map params) {
@@ -143,7 +141,7 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
 
         JSONObject json = new JSONObject(paramMap);
         String js = String.format("javascript:(function(){window.ywenHybrid.cbs['%s']('%s')})()", callback, json.toString());
-        this.loadUrl(js);
+        this.loadUrlOnUIThread(js);
     }
 
 
@@ -162,7 +160,7 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
 
         JSONObject json = new JSONObject(paramMap);
         String js = String.format("javascript:(function(){window.ywenHybrid.cbs['%s']('%s')})()", callback, json.toString());
-        this.loadUrl(js);
+        this.loadUrlOnUIThread(js);
 
     }
 
@@ -170,7 +168,7 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
     public void callJs(Map<String, Object> params) {
         String json = (new JSONObject(params)).toString();
         String js = String.format("javascript:(function(){window.ywenHybrid.callJs('%s')})()", json);
-        this.loadUrl(js);
+        this.loadUrlOnUIThread(js);
     }
 
     @Override

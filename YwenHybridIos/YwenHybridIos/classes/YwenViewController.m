@@ -38,18 +38,9 @@
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSURL *url = [request URL];
-    if ([url.scheme isEqualToString:@"ywen"]) {
-        NSArray *queryList = [[url.query stringByRemovingPercentEncoding] componentsSeparatedByString:@"&"];
-        NSString *paramStr = [queryList[0] componentsSeparatedByString:@"="][1];
-        NSDictionary *params = [NSJSONSerialization JSONObjectWithData:[paramStr dataUsingEncoding: NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-        
-        NSString *callback = nil;
-        
-        if (queryList.count > 1) {
-            callback = [queryList[1] componentsSeparatedByString:@"="][1];
-        }
-        
-        [self callFromJs:url.host params:params callback:callback];
+    
+    if ([url.scheme isEqualToString:@"ywen"] && [url.host isEqualToString:@"new_msg"]) {
+        [self fetchMessageQueue];
         
         return NO;
     }
@@ -58,6 +49,17 @@
         return YES;
     }
     
+}
+
+-(void) fetchMessageQueue {
+    NSString *msgQueueStr = [_webView stringByEvaluatingJavaScriptFromString:@"(function(){return window.ywenHybrid.getMessageQueue()})()"];
+    NSArray *msgQueue = [NSJSONSerialization JSONObjectWithData:[msgQueueStr dataUsingEncoding: NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+    for (NSDictionary *msgDic in msgQueue) {
+        NSString *tag = [msgDic objectForKey:@"msg"];
+        NSDictionary *params = [msgDic objectForKey:@"params"];
+        NSString *callback = [msgDic objectForKey:@"callback"];
+        [self callFromJs:tag params:params callback:callback];
+    }
 }
 
 -(void)callFromJs:(NSString *)tag params:(NSDictionary *)params callback:(NSString *)callback {

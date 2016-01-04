@@ -21,6 +21,7 @@ public class HybridWebViewClient extends WebViewClient {
     @Override
     public void onLoadResource(WebView view, String url) {
         super.onLoadResource(view, url);
+
         this.hybridWebView.parseUrl(url);
     }
 }

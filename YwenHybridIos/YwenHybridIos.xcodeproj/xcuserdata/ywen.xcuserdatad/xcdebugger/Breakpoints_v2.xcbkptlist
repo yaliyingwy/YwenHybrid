@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YwenHybridIos/classes/YwenViewController.m"
-            timestampString = "471440120.860224"
+            timestampString = "473521782.490016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "@implementation YwenViewController"
             landmarkType = "3">
          </BreakpointContent>
