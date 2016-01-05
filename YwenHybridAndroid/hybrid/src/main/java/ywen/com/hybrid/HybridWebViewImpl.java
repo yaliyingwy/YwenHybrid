@@ -81,6 +81,7 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
 
         settings.setAppCacheEnabled(true);
 
+
         final HybridInterface hybridInterface = new HybridInterface(this);
         this.addJavascriptInterface(hybridInterface, "hybridAndroid");
 

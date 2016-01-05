@@ -2,7 +2,7 @@ Hybrid = require './hybrid.js'
 
 push = (page, param, success, err)->
 	paramDic = param or {}
-	console.assert (typeof param) == 'object', 'param参数必须是对象'
+	console.assert (typeof paramDic) == 'object', 'param参数必须是对象'
 	paramDic.page = page
 	Hybrid.exec 'push', paramDic, success, err
 

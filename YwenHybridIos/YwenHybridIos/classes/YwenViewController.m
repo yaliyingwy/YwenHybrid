@@ -90,6 +90,9 @@
 
 
 -(void)success:(NSString *)callback params:(NSDictionary *)params {
+    if (callback == nil) {
+        return;
+    }
     NSString *js;
     if (params != nil) {
         NSDictionary *paramDic = @{
@@ -108,6 +111,9 @@
 }
 
 -(void)error:(NSString *)callback error:(NSString *)error {
+    if (callback == nil) {
+        return;
+    }
     NSDictionary *paramDic = @{
                                @"code": @"0001",
                                @"error": error ? error : @"error"
