@@ -43,9 +43,11 @@
 @interface YwenViewController : UIViewController <UIWebViewDelegate, HybridDelegate>
 @property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) NSString *htmlPath;
+@property (strong, nonatomic) NSDictionary *params;
 @property (weak, nonatomic) id<HybridNavDelegate> hybridNav;
 @property (weak, nonatomic) id<HybridUIDelegate> hybridUI;
 
+-(void) loadPage;
 -(void) callJS:(NSDictionary *) params;
 -(void) releaseWebView;
 -(void) success: (NSString *) callback params: (NSDictionary *) params;

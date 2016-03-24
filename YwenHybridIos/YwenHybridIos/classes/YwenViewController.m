@@ -27,14 +27,33 @@
      self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.view addSubview:_webView];
     
+    if (_htmlPath != nil) {
+        [self loadPage];
+    }
+    
 }
 
--(void)setHtmlPath:(NSString *)htmlPath {
-    _htmlPath = htmlPath;
-    NSURL *url = [NSURL URLWithString:htmlPath];
+-(void)loadPage {
+    if (_htmlPath == nil) {
+        return;
+    }
+    NSMutableString *urlStr = [[NSMutableString alloc] initWithFormat:@"%@?", _htmlPath];
+    if (_params != nil) {
+        [_params enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            [urlStr appendFormat:@"%@=%@&", key, obj];
+        }];
+    }
+    NSLog(@"url %@", urlStr);
+
+    NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
-    [_webView loadRequest:req];
+    if (_webView != nil) {
+        [_webView loadRequest:req];
+    }
+    
 }
+
+
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSURL *url = [request URL];

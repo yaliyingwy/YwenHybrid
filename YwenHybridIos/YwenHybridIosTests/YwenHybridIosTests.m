@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "YwenViewController.h"
 
 @interface YwenHybridIosTests : XCTestCase
 
@@ -27,6 +28,10 @@
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+    YwenViewController *vc = [YwenViewController new];
+    vc.htmlPath = @"http://www.baidu.com";
+    vc.params = @{@"name": @"ywen"};
+    [vc loadPage];
 }
 
 - (void)testPerformanceExample {
