@@ -29,6 +29,12 @@
 
 @end
 
+@protocol HybridCommandDelegate <NSObject>
+
+-(void) commanFromJs:(NSString *) tag params:(NSDictionary *) params callback:(NSString *) callback;
+
+@end
+
 @protocol HybridUIDelegate <NSObject>
 
 @required
@@ -46,6 +52,7 @@
 @property (strong, nonatomic) NSDictionary *params;
 @property (weak, nonatomic) id<HybridNavDelegate> hybridNav;
 @property (weak, nonatomic) id<HybridUIDelegate> hybridUI;
+@property (weak, nonatomic) id<HybridCommandDelegate> hybridCommand;
 
 -(void) loadPage;
 -(void) callJS:(NSDictionary *) params;

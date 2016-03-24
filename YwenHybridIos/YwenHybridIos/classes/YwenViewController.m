@@ -103,6 +103,9 @@
     {
         [self.hybridUI toast:params];
     }
+    else {
+        [self.hybridCommand commanFromJs:tag params:params callback:callback];
+    }
     
     
 }
