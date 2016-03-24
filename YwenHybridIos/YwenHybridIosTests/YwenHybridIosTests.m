@@ -30,7 +30,7 @@
     // Use XCTAssert and related functions to verify your tests produce the correct results.
     YwenViewController *vc = [YwenViewController new];
     vc.htmlPath = @"http://www.baidu.com";
-    vc.params = @{@"name": @"ywen"};
+    vc.params = @{@"name": @"ywen", @"cn": @"嘉陵江"};
     [vc loadPage];
 }
 

@@ -63,13 +63,15 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
     public void setHtmlPage(String htmlPage) {
         this.htmlPage = htmlPage;
         this.loadUrl(this.getUrl());
+//        this.loadDataWithBaseURL(this.htmlPath, this.htmlPage, "text/html", "utf-8", null);
     }
 
 
     public HybridWebViewImpl(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.init(context);
-
+        if (!isInEditMode()) {
+            this.init(context);
+        }
     }
 
     public void init(Context context) {
@@ -78,6 +80,10 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
         settings.setDomStorageEnabled(true);
 
         settings.setAllowFileAccess(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            settings.setAllowFileAccessFromFileURLs(true);
+        }
+
 
         settings.setAppCacheEnabled(true);
 

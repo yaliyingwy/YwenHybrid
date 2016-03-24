@@ -40,7 +40,7 @@
     NSMutableString *urlStr = [[NSMutableString alloc] initWithFormat:@"%@?", _htmlPath];
     if (_params != nil) {
         [_params enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            [urlStr appendFormat:@"%@=%@&", key, obj];
+            [urlStr appendFormat:@"%@=%@&", key, [[NSString stringWithFormat:@"%@", obj] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
         }];
     }
     NSLog(@"url %@", urlStr);

@@ -18,10 +18,17 @@ public class HybridWebViewClient extends WebViewClient {
         this.hybridWebView = hybridWebView;
     }
 
-    @Override
-    public void onLoadResource(WebView view, String url) {
-        super.onLoadResource(view, url);
 
-        this.hybridWebView.parseUrl(url);
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        if (url.startsWith("ywen")) {
+            this.hybridWebView.parseUrl(url);
+            return true;
+        }
+        else
+        {
+            return super.shouldOverrideUrlLoading(view, url);
+        }
+
     }
 }
