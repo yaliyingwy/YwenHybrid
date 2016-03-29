@@ -2,6 +2,7 @@ package ywen.com.hybrid;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -13,6 +14,7 @@ public interface HybridWebView {
     void success(String callback, Map params);
     void error(String callback, String error);
     void callJs(Map<String, Object> params);
-    void loadPage(HybridCore hybridCore, String page);
+    void loadPage(HybridCore hybridCore, String page, String queryStr) throws IOException;
     void loadUrlOnUIThread(final String url);
+    void init();
 }

@@ -1,7 +1,6 @@
 package ywen.com.hybrid;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -10,6 +9,9 @@ import android.webkit.WebView;
 
 import org.json.JSONObject;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,9 +23,18 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
     private String htmlPage = "index.html";
     private Map<String, String> params;
     private String url;
+    private String query = "";
+    private String baseUrl = null;
+
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
 
     private HybridCore hybridCore;
-
 
 
     public HybridCore getHybridCore() {
@@ -36,8 +47,13 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
 
 
     public String getUrl() {
-        String query = "";
         return String.format("%s/%s?%s", this.htmlPath, this.htmlPage, query);
+    }
+
+    public void setQuery(String query) {
+        if (query != null) {
+            this.query = query;
+        }
     }
 
     public String getHtmlPath() {
@@ -62,26 +78,25 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
 
     public void setHtmlPage(String htmlPage) {
         this.htmlPage = htmlPage;
-        this.loadUrl(this.getUrl());
-//        this.loadDataWithBaseURL(this.htmlPath, this.htmlPage, "text/html", "utf-8", null);
     }
 
 
     public HybridWebViewImpl(Context context, AttributeSet attrs) {
         super(context, attrs);
         if (!isInEditMode()) {
-            this.init(context);
+            this.init();
         }
     }
 
-    public void init(Context context) {
+
+    public void init() {
         WebSettings settings = this.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
 
         settings.setAllowFileAccess(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            settings.setAllowFileAccessFromFileURLs(true);
+            settings.setAllowUniversalAccessFromFileURLs(true);
         }
 
 
@@ -97,11 +112,6 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
         this.setWebViewClient(hybridWebViewClient);
 
         this.setWebChromeClient(new HybridWebChromeClient());
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (0 != (context.getApplicationInfo().flags &= ApplicationInfo.FLAG_DEBUGGABLE))
-            { WebView.setWebContentsDebuggingEnabled(true); }
-        }
 
     }
 
@@ -179,9 +189,39 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
     }
 
     @Override
-    public void loadPage(HybridCore hybridCore, String page) {
+    public void loadPage(HybridCore hybridCore, String page, String queryStr) throws IOException {
         this.hybridCore = hybridCore;
+        this.query = queryStr;
         this.setHtmlPage(page);
+        String url = getUrl();
+        if (baseUrl != null) {
+            String filePath = htmlPath;
+            if (htmlPage.endsWith("?")) {
+                filePath += String.format("/%s", htmlPage.replace("?", ""));
+            } else {
+                filePath += String.format("/%s", htmlPage);
+            }
+
+            FileInputStream fin = null;
+            try {
+                fin = new FileInputStream(filePath);
+                int length = fin.available();
+
+                byte [] buffer = new byte[length];
+                fin.read(buffer);
+
+                String res = new String(buffer);
+
+                this.loadDataWithBaseURL(String.format("%s/%s?%s", baseUrl, htmlPage, query), res, "text/html", "utf-8", null);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+        } else {
+            this.loadUrl(this.getUrl());
+        }
+
     }
 
 

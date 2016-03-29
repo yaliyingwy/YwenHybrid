@@ -12,76 +12,113 @@
 
 @implementation HotUpdateManager
 
-+(void)downloadFile:(NSString *)url wwwVersion:(NSString *)wwwVersion {
-    //    下载zip文件
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        NSURL *zipUrl = [NSURL URLWithString:url];
-        NSError *error = nil;
-        NSData *resdata = [NSData dataWithContentsOfURL:zipUrl options:0 error:&error];
-        NSString *mainVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-        NSString *latestUpdate = [NSString stringWithFormat:@"%@_%@", mainVersion, wwwVersion];
-        if(!error)
-        {
-            NSString *targetPath = [UPDATE_FOLDER stringByAppendingPathComponent: latestUpdate];
++(HotUpdateManager *)sharedInstance {
+    static HotUpdateManager *hotUpdateManager = nil;
+    @synchronized(self) {
+        if (hotUpdateManager == nil) {
+            hotUpdateManager = [[self alloc] init];
+        }
+    }
+    return hotUpdateManager;
+}
+
+-(void)checkUpdate {
+    NSString *urlStr = [ItunesUrl stringByAppendingString:self.appID];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error == nil) {
+            NSDictionary *infoDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            if ([infoDic isKindOfClass:[NSDictionary class]]) {
+                NSArray *results = [infoDic objectForKey:@"results"];
+                if ([results isKindOfClass:[NSArray class]]) {
+                    NSDictionary *dic = results[0];
+                    NSString *version = [dic objectForKey:@"version"];
+                    NSString *trackViewUrl = [dic objectForKey:@"trackViewUrl"];
+                    NSLog(@"version: %@, currentVersion: %@", version, CURRENT_VERSION);
+                   
+                    if ([version compare:CURRENT_VERSION] == NSOrderedDescending) {
+                        [self.delegate hasNewVerion:trackViewUrl];
+                    }
+                }
+            }
             
-            if ([[NSFileManager defaultManager] fileExistsAtPath:targetPath]) {
-                NSLog(@"exit");
-                //               update文件夹存在
-            }else{
-                BOOL bo = [[NSFileManager defaultManager] createDirectoryAtPath:targetPath withIntermediateDirectories:YES attributes:nil error:nil];
-                if (bo) {
-                    NSLog(@"update不存在 创建success");
-                }else{
-                    NSLog(@"update不存在 创建faile");
+            
+        }
+    }];
+    [task resume];
+    
+}
+
+
+
+-(void)downloadFile:(NSString *)url wwwVersion:(NSString *)wwwVersion {
+    //    下载zip文件
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSInteger statusCode = ((NSHTTPURLResponse *) response).statusCode;
+
+        if (error == nil || statusCode > 299 || statusCode < 200) {
+            NSFileManager *fm = [NSFileManager defaultManager];
+            if (![fm fileExistsAtPath:UPDATE_FOLDER]) {
+                BOOL ret = [fm createDirectoryAtPath:UPDATE_FOLDER withIntermediateDirectories:YES attributes:nil error:nil];
+                if (!ret) {
+                    NSLog(@"创建热更新目录失败");
                     return;
                 }
             }
-            //            设置下载zip文件路径
-            NSString *zipPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"www.zip"];
-            //            zip写入Cashes
-            [resdata writeToFile:zipPath options:0 error:&error];
-            if(!error)
-            {
-                //                解压
-                ZipArchive *za = [[ZipArchive alloc] init];
-                if ([za UnzipOpenFile: zipPath]) {
-                    BOOL ret = [za UnzipFileTo: targetPath overWrite: YES];
-                    if (NO == ret){
-                        NSLog(@"下载 失败");
-                    }else{
-                        [za UnzipCloseFile];
-                        NSDictionary *hotUpdateDic = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefault_hotUpdateVersion];
-                        if (hotUpdateDic == nil) {
-                            hotUpdateDic = @{};
-                        }
-                        NSMutableDictionary *newUpdateDic = [hotUpdateDic mutableCopy];
-                        [newUpdateDic setObject:latestUpdate forKey:mainVersion];
-                        [[NSUserDefaults standardUserDefaults] setObject:newUpdateDic forKey:kUserDefault_hotUpdateVersion];
-                        [[NSUserDefaults standardUserDefaults] synchronize];
-                        NSLog(@"##### 热更新完成 下次启动使用最新程序 ####");
-                        NSLog(@"热更新版本%@\n zipPath  \n %@ \n\n",latestUpdate,zipPath);
-                    }
-                }
-                else
-                {
-                    NSLog(@"Error saving file %@",error);
-                }
+            
+            NSString *zip = [UPDATE_FOLDER stringByAppendingPathComponent:@"hot.zip"];
+            
+            NSError *err = nil;
+            [data writeToFile:zip options:0 error:&err];
+            if (err) {
+                NSLog(@"写入zip文件失败: %@", err);
+                return;
             }
-            else
-            {
-                NSLog(@"Error downloading zip file: %@", error);
+            
+            NSString *www = [UPDATE_FOLDER stringByAppendingPathComponent:@"www"];
+            
+            if ([fm fileExistsAtPath:www]) {
+                [fm removeItemAtPath: www error:nil];
             }
+            ZipArchive *za = [[ZipArchive alloc] init];
+            [za UnzipOpenFile:zip];
+//            NSLog(@"%@ file info: %@", zip, [za getZipFileContents]);
+//            za.delegate = self;
+            BOOL result = [za UnzipFileTo: www overWrite: YES];
+            [za UnzipCloseFile];
+            if (!result) {
+                NSLog(@"解压zip失败 %@", UPDATE_FOLDER);
+                return;
+            }
+            
+            NSDictionary *hotUpdateDic = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefault_hotUpdateVersion];
+            if (hotUpdateDic == nil) {
+                hotUpdateDic = @{};
+            }
+            NSMutableDictionary *newUpdateDic = [hotUpdateDic mutableCopy];
+            [newUpdateDic setObject:wwwVersion forKey:CURRENT_VERSION];
+            [[NSUserDefaults standardUserDefaults] setObject:newUpdateDic forKey:kUserDefault_hotUpdateVersion];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            NSLog(@"##### 热更新完成 下次启动使用最新程序 ####");
+            [self.delegate hotUpdateDone];
         }
-    });
+    }];
+    
+    [task resume];
+    
 }
 
-+(NSString *)wwwPath {
-    NSString *mainVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+-(void)ErrorMessage:(NSString *)msg {
+    NSLog(@"zip error msg: %@", msg);
+}
+
+-(NSString *)wwwPath {
     NSDictionary *hotUpdateDic = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefault_hotUpdateVersion];
-    NSString *latestVersion = [hotUpdateDic objectForKey:mainVersion];
-    if (latestVersion != nil) {
-        return [[UPDATE_FOLDER stringByAppendingPathComponent:latestVersion] stringByAppendingPathComponent:@"www"];
+    NSString *hotVersion = [hotUpdateDic objectForKey:CURRENT_VERSION];
+    if (hotVersion != nil) {
+        return [UPDATE_FOLDER stringByAppendingPathComponent:@"www"];
     }
     else
     {

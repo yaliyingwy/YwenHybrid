@@ -21,7 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.webView.backgroundColor = [UIColor redColor];
-    NSString *path = [[HotUpdateManager wwwPath] stringByAppendingString:@"/index.html"];
+    NSString *path = [[[HotUpdateManager sharedInstance] wwwPath] stringByAppendingString:@"/index.html"];
     self.htmlPath = path;
     
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithTitle:@"calljs" style:UIBarButtonItemStyleDone target:self action:@selector(testCallJs)];

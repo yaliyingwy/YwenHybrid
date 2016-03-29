@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +29,11 @@ public class MainActivity extends ActionBarActivity implements HybridCore {
         setContentView(R.layout.activity_main);
         HybridWebViewImpl webView = (HybridWebViewImpl) this.findViewById(R.id.webView);
 
-        webView.loadPage(this, "index.html");
+        try {
+            webView.loadPage(this, "index.html", null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
