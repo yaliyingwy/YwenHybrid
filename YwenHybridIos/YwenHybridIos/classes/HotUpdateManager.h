@@ -34,9 +34,12 @@
 
 @property (weak, nonatomic) id<HotUpdateDelegate> delegate;
 @property (strong, nonatomic) NSString *appID;
+@property (strong, nonatomic) NSString *currentHotVersion;
 
 -(void) downloadFile:(NSString *) url wwwVersion:(NSString *) wwwVersion;
 -(NSString *) wwwPath;
 -(void) checkUpdate;
+-(void) rollBack;
+-(void) cleanOldHotFiles;
 
 @end

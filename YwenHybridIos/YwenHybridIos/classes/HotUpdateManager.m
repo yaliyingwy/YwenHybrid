@@ -17,9 +17,42 @@
     @synchronized(self) {
         if (hotUpdateManager == nil) {
             hotUpdateManager = [[self alloc] init];
+            NSDictionary *hotUpdateDic = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefault_hotUpdateVersion];
+            NSString *hotVersion = [hotUpdateDic objectForKey:CURRENT_VERSION];
+            hotUpdateManager.currentHotVersion = hotVersion;
         }
     }
     return hotUpdateManager;
+}
+
+-(void)rollBack {
+    // 简单粗暴的回滚掉热更新
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefault_hotUpdateVersion];
+    _currentHotVersion = nil;
+}
+
+-(void)cleanOldHotFiles {
+    NSLog(@"clear old files: %@", UPDATE_FOLDER);
+    // 移除老版本的热更新文件
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (_currentHotVersion == nil) {
+        if ([fileManager fileExistsAtPath:UPDATE_FOLDER]) {
+            [fileManager removeItemAtPath: UPDATE_FOLDER  error:nil];
+        }
+        
+    } else {
+        NSError *error = nil;
+        
+        for (NSString *file in [fileManager contentsOfDirectoryAtPath:UPDATE_FOLDER error:&error]) {
+            if (![file hasPrefix:_currentHotVersion]) {
+                BOOL success = [fileManager removeItemAtPath:[UPDATE_FOLDER stringByAppendingPathComponent: file] error:&error];
+                if (!success || error) {
+                    NSLog(@"remove file failded %@, %@", file, error);
+                }
+            }
+        }
+    }
+    
 }
 
 -(void)checkUpdate {
@@ -70,22 +103,17 @@
             
             NSString *zip = [UPDATE_FOLDER stringByAppendingPathComponent:@"hot.zip"];
             
-            NSError *err = nil;
-            [data writeToFile:zip options:0 error:&err];
-            if (err) {
-                NSLog(@"写入zip文件失败: %@", err);
-                return;
-            }
             
-            NSString *www = [UPDATE_FOLDER stringByAppendingPathComponent:@"www"];
+            [data writeToFile:zip atomically:YES];
+            
+            
+            NSString *www = [UPDATE_FOLDER stringByAppendingPathComponent:wwwVersion];
             
             if ([fm fileExistsAtPath:www]) {
                 [fm removeItemAtPath: www error:nil];
             }
             ZipArchive *za = [[ZipArchive alloc] init];
             [za UnzipOpenFile:zip];
-//            NSLog(@"%@ file info: %@", zip, [za getZipFileContents]);
-//            za.delegate = self;
             BOOL result = [za UnzipFileTo: www overWrite: YES];
             [za UnzipCloseFile];
             if (!result) {
@@ -115,10 +143,8 @@
 }
 
 -(NSString *)wwwPath {
-    NSDictionary *hotUpdateDic = [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefault_hotUpdateVersion];
-    NSString *hotVersion = [hotUpdateDic objectForKey:CURRENT_VERSION];
-    if (hotVersion != nil) {
-        return [UPDATE_FOLDER stringByAppendingPathComponent:@"www"];
+    if (_currentHotVersion != nil) {
+        return [[UPDATE_FOLDER stringByAppendingPathComponent:_currentHotVersion] stringByAppendingPathComponent:@"www"];
     }
     else
     {

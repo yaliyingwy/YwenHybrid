@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YwenHybridIos/classes/HotUpdateManager.m"
-            timestampString = "480928290.264352"
+            timestampString = "481182769.490534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-checkUpdate"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YwenHybridIos/classes/HotUpdateManager.m"
-            timestampString = "480928692.670725"
+            timestampString = "481182769.490534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "-checkUpdate"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YwenHybridIos/classes/HotUpdateManager.m"
-            timestampString = "480929236.50778"
+            timestampString = "481182769.490534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "-checkUpdate"
             landmarkType = "5">
          </BreakpointContent>
@@ -298,12 +298,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YwenHybridIosTests/YwenHybridIosTests.m"
-            timestampString = "480933812.321928"
+            timestampString = "481191345.587175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "-checkHotUpdate"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YwenHybridIosTests/YwenHybridIosTests.m"
+            timestampString = "481191002.109016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-testClear"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

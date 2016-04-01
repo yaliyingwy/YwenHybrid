@@ -49,8 +49,20 @@
     dispatch_semaphore_wait(self.sem, DISPATCH_TIME_FOREVER);
 }
 
+-(void) testClear {
+    HotUpdateManager *updater = [HotUpdateManager sharedInstance];
+    [updater cleanOldHotFiles];
+}
+
 -(void) testHotUpdate {
     [self checkHotUpdate];
+}
+
+-(void) testRollBack {
+    HotUpdateManager *updater = [HotUpdateManager sharedInstance];
+     NSLog(@"www path before %@", [updater wwwPath]);
+    [updater rollBack];
+    NSLog(@"www path after %@", [updater wwwPath]);
 }
 
 - (void)testPerformanceExample {
@@ -71,7 +83,7 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefault_hotUpdateVersion];
     self.sem = dispatch_semaphore_create(0);
     NSLog(@"www path before: %@", [updater wwwPath]);
-    [updater downloadFile:@"http://192.168.29.45:8001/update?version=0.0.1" wwwVersion:@"0.0.1"];
+    [updater downloadFile:@"http://192.168.29.45:8001/update?version=0.1.3" wwwVersion:@"0.1.3"];
     dispatch_semaphore_wait(self.sem, DISPATCH_TIME_FOREVER);
 }
 

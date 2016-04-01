@@ -40,6 +40,11 @@ window.errToast = function(){
 
 window.showLoading = function(){
     YwenHybrid.ui.loading('show', '10秒后消失', true, 10);
+    YwenHybrid.ui.loading('show', '10秒后消失', true, 10);
+    YwenHybrid.ui.loading('show', '10秒后消失', true, 10);
+    YwenHybrid.ui.loading('hide', '10秒后消失', true, 10);
+    YwenHybrid.ui.loading('hide', '10秒后消失', true, 10);
+
 }
 
 window.cancelLoading = function(){

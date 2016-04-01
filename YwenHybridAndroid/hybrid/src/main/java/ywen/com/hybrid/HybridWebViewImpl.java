@@ -26,6 +26,10 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
     private String query = "";
     private String baseUrl = null;
 
+    private HybridWebChromeClient hybridWebChromeClient = new HybridWebChromeClient();
+
+
+
     public String getBaseUrl() {
         return baseUrl;
     }
@@ -111,7 +115,8 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
         hybridWebViewClient.setHybridWebView(this);
         this.setWebViewClient(hybridWebViewClient);
 
-        this.setWebChromeClient(new HybridWebChromeClient());
+
+        this.setWebChromeClient(hybridWebChromeClient);
 
     }
 

@@ -36,6 +36,20 @@ public class HybridUIImpl implements HybridUI {
 
     private static Dialog loadingDialog = null;
     private static int loadingCount = 0;  //相当于一个计数器,防止多个网络请求的时候dismiss出现并发性问题
+    private static HybridUIImpl mInstance = null;
+
+    private HybridUIImpl() {
+    }
+
+    public static HybridUIImpl getInstance() {
+        if (mInstance == null) {
+            Class clazz = HybridUIImpl.class;
+            synchronized (clazz) {
+                mInstance = new HybridUIImpl();
+            }
+        }
+        return mInstance;
+    }
 
     private static class  HybridHandler extends Handler {
         @Override
@@ -149,6 +163,9 @@ public class HybridUIImpl implements HybridUI {
             if ("hide".equals(type) && loadingDialog != null) {
                 if (loadingCount == 1) {
                     loadingDialog.dismiss();
+                    loadingCount = 0;
+                } else {
+                    loadingCount--;
                 }
             }
             else
@@ -165,9 +182,7 @@ public class HybridUIImpl implements HybridUI {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
                         Log.d("dialog", "dismiss-------------" + loadingCount);
-                        if (loadingCount > 0) {
-                            loadingCount--;
-                        }
+                        loadingCount = 0;
                     }
                 });
 
