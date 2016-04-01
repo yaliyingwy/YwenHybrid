@@ -10,6 +10,7 @@
 #import "ZipArchive.h"
 
 
+
 @implementation HotUpdateManager
 
 +(HotUpdateManager *)sharedInstance {
@@ -107,7 +108,7 @@
             [data writeToFile:zip atomically:YES];
             
             
-            NSString *www = [UPDATE_FOLDER stringByAppendingPathComponent:wwwVersion];
+            NSString *www = [[UPDATE_FOLDER stringByAppendingPathComponent: wwwVersion] stringByAppendingPathComponent:@"www"];
             
             if ([fm fileExistsAtPath:www]) {
                 [fm removeItemAtPath: www error:nil];
@@ -130,6 +131,7 @@
             [[NSUserDefaults standardUserDefaults] setObject:newUpdateDic forKey:kUserDefault_hotUpdateVersion];
             [[NSUserDefaults standardUserDefaults] synchronize];
             NSLog(@"##### 热更新完成 下次启动使用最新程序 ####");
+            _currentHotVersion = wwwVersion;
             [self.delegate hotUpdateDone];
         }
     }];
@@ -144,7 +146,7 @@
 
 -(NSString *)wwwPath {
     if (_currentHotVersion != nil) {
-        return [[UPDATE_FOLDER stringByAppendingPathComponent:_currentHotVersion] stringByAppendingPathComponent:@"www"];
+        return [[UPDATE_FOLDER stringByAppendingPathComponent: _currentHotVersion]  stringByAppendingPathComponent:@"www"];
     }
     else
     {
