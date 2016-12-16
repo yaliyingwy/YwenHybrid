@@ -1,6 +1,6 @@
-Hybrid = require('./build/hybrid.js');
-Nav = require('./build/nav.js');
-UI = require('./build/ui.js');
+var Hybrid = require('./build/hybrid.js');
+var Nav = require('./build/nav.js');
+var UI = require('./build/ui.js');
 
 module.exports = {
 	hybrid: Hybrid,
