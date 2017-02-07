@@ -1,8 +1,8 @@
 package ywen.com.hybrid;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
@@ -73,7 +73,7 @@ public class HybridUIImpl implements HybridUI {
 
     static  Handler handler = new HybridHandler();
     @Override
-    public void alert(Context context, final HybridWebView webView, JSONObject params, final String callback) {
+    public void alert(final Activity activity, final HybridWebView webView, JSONObject params, final String callback) {
         String title = "提示", msg ="";
         String[] btns = {"确定", "取消"};
         try {
@@ -88,38 +88,42 @@ public class HybridUIImpl implements HybridUI {
             e.printStackTrace();
         }
         finally {
-            AlertDialog.Builder dlg = new AlertDialog.Builder(context, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT); // new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+            final  AlertDialog.Builder dlg = new AlertDialog.Builder(activity, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT); // new AlertDialog.Builder(cordova.getActivity(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
             dlg.setMessage(msg);
             dlg.setTitle(title);
             dlg.setCancelable(true);
             dlg.setPositiveButton(btns[0],
                     new AlertDialog.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
+                        public void onClick(final  DialogInterface dialog, int which) {
                             dialog.dismiss();
                             webView.success(callback, null);
+
                         }
                     });
             dlg.setOnCancelListener(new AlertDialog.OnCancelListener() {
-                public void onCancel(DialogInterface dialog) {
+                public void onCancel(final DialogInterface dialog) {
                     dialog.dismiss();
                     webView.error(callback, "user canceled");
+
                 }
             });
 
             dlg.setNegativeButton(btns[1],
                     new AlertDialog.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
+                        public void onClick(final DialogInterface dialog, int which) {
                             dialog.dismiss();
                             webView.error(callback, "cancel");
+
                         }
                     });
             dlg.show();
+
         }
 
     }
 
     @Override
-    public void toast(Context context, JSONObject params) {
+    public void toast(Activity activity, JSONObject params) {
         String type = "show" , msg = "", position = "bottom";
         try {
             type = params.getString("type");
@@ -131,20 +135,20 @@ public class HybridUIImpl implements HybridUI {
         finally {
             switch (type) {
                 case "show":
-                    this.showToast(context, msg, position);
+                    this.showToast(activity, msg, position);
                     break;
                 case "success":
-                    this.showWithImg(context, msg, R.drawable.toast_success);
+                    this.showWithImg(activity, msg, R.drawable.toast_success);
                     break;
                 case "error":
-                    this.showWithImg(context, msg, R.drawable.toast_err);
+                    this.showWithImg(activity, msg, R.drawable.toast_err);
                     break;
             }
         }
     }
 
     @Override
-    public void loading(Context context, JSONObject params) {
+    public void loading(final Activity activity, JSONObject params) {
         String type = "show", msg = "请稍候....";
         boolean force = true;
         int timeout = 35;
@@ -164,14 +168,17 @@ public class HybridUIImpl implements HybridUI {
                 if (loadingCount == 1) {
                     loadingDialog.dismiss();
                     loadingCount = 0;
+
                 } else {
                     loadingCount--;
                 }
             }
             else
             {
+                final String message = msg;
                 if (loadingCount == 0) {
-                    loadingDialog = createLoadingDialog(context, msg);
+                    loadingDialog = createLoadingDialog(activity, message);
+
                 }
                 loadingCount++;
 
@@ -191,7 +198,19 @@ public class HybridUIImpl implements HybridUI {
                 TimerTask timerTask = new TimerTask() {
                     @Override
                     public void run() {
-                        handler.sendEmptyMessage(1);
+//                        handler.sendEmptyMessage(1);
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (loadingCount == 1) {
+                                    loadingDialog.dismiss();
+                                }
+                                else
+                                {
+                                    loadingCount--;
+                                }
+                            }
+                        });
                     }
                 };
 
@@ -199,6 +218,7 @@ public class HybridUIImpl implements HybridUI {
                 timer.schedule(timerTask, timeout * 1000);
 
                 loadingDialog.show();
+
             }
 
 
@@ -206,35 +226,38 @@ public class HybridUIImpl implements HybridUI {
 
     }
 
-    public void showToast(Context context, String msg, String position) {
-        Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+    public void showToast(Activity activity, String msg, String position) {
+        final Toast toast = Toast.makeText(activity, msg, Toast.LENGTH_SHORT);
         if ("center".equals(position)) {
             toast.setGravity(Gravity.CENTER, 0, 0);
         }
 
         toast.show();
+
     }
 
-    public void showWithImg(Context context, String msg, int img) {
-        Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+    public void showWithImg(Activity activity, String msg, int img) {
+        final  Toast toast = Toast.makeText(activity, msg, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
-        ImageView imageView = new ImageView(context);
+        ImageView imageView = new ImageView(activity);
         imageView.setImageResource(img);
 
         LinearLayout toastView = (LinearLayout) toast.getView();
         toastView.addView(imageView, 0);
+
         toast.show();
+
     }
 
     /**
      * 得到自定义的progressDialog
-     * @param context  context
+     * @param activity activity
      * @param msg  消息
      * @return dialog
      */
-    public static Dialog createLoadingDialog(Context context, String msg) {
+    public static Dialog createLoadingDialog(Activity activity, String msg) {
 
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(activity);
         View v = inflater.inflate(R.layout.hybrid_loading, null);// 得到加载view
         LinearLayout layout = (LinearLayout) v.findViewById(R.id.dialog_view);// 加载布局
         // main.xml中的ImageView
@@ -242,12 +265,12 @@ public class HybridUIImpl implements HybridUI {
         TextView tipTextView = (TextView) v.findViewById(R.id.tipTextView);// 提示文字
         // 加载动画
         Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(
-                context, R.anim.loading_anim);
+                activity, R.anim.loading_anim);
         // 使用ImageView显示动画
         spaceshipImage.startAnimation(hyperspaceJumpAnimation);
         tipTextView.setText(msg);// 设置加载信息
 
-        Dialog dialog = new Dialog(context, R.style.loading_dialog);// 创建自定义样式dialog
+        Dialog dialog = new Dialog(activity, R.style.loading_dialog);// 创建自定义样式dialog
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
 

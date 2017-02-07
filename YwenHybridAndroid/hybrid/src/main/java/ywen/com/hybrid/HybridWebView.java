@@ -1,5 +1,7 @@
 package ywen.com.hybrid;
 
+import android.content.Context;
+
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -16,5 +18,5 @@ public interface HybridWebView {
     void callJs(Map<String, Object> params);
     void loadPage(HybridCore hybridCore, String page, String queryStr) throws IOException;
     void loadUrlOnUIThread(final String url);
-    void init();
+    void init(Context context);
 }

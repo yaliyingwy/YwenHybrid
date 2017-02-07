@@ -1,5 +1,6 @@
 package ywen.com.hybrid;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -26,9 +27,11 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
     private String query = "";
     private String baseUrl = null;
 
-    private HybridWebChromeClient hybridWebChromeClient = new HybridWebChromeClient();
+    private HybridWebChromeClient hybridWebChromeClient;
 
-
+    public HybridWebChromeClient getHybridWebChromeClient() {
+        return hybridWebChromeClient;
+    }
 
     public String getBaseUrl() {
         return baseUrl;
@@ -88,15 +91,19 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
     public HybridWebViewImpl(Context context, AttributeSet attrs) {
         super(context, attrs);
         if (!isInEditMode()) {
-            this.init();
+            this.init(context);
         }
     }
 
 
-    public void init() {
+    public void init(Context context) {
         WebSettings settings = this.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
+        settings.setGeolocationEnabled(true);
+        settings.setAppCacheEnabled(true);
+        settings.setDatabaseEnabled(true);
+        settings.setGeolocationDatabasePath( context.getFilesDir().getPath() );
 
         settings.setAllowFileAccess(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -115,6 +122,7 @@ public class HybridWebViewImpl extends WebView implements HybridWebView{
         hybridWebViewClient.setHybridWebView(this);
         this.setWebViewClient(hybridWebViewClient);
 
+        hybridWebChromeClient = new HybridWebChromeClient((Activity)context);
 
         this.setWebChromeClient(hybridWebChromeClient);
 

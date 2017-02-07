@@ -1,5 +1,7 @@
 package ywen.com.hybrid;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -24,6 +26,13 @@ public class HybridWebViewClient extends WebViewClient {
         if (url.startsWith("ywen")) {
             this.hybridWebView.parseUrl(url);
             return true;
+        }
+        else if (url.startsWith("mailto:") || url.startsWith("tel:")) {
+            Intent intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(url));
+
+            view.getContext().startActivity(intent);
+            return  true;
         }
         else
         {
