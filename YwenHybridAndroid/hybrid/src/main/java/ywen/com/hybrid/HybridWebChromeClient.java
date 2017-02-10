@@ -12,6 +12,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
 import java.io.File;
+import java.util.Date;
 
 import ywen.com.hybrid.utils.FileUtils;
 
@@ -34,7 +35,7 @@ public class HybridWebChromeClient extends WebChromeClient {
     private final static int FILECHOOSER_RESULTCODE = 2;
     private ValueCallback<Uri[]> mFilePathCallback;
 
-    private Uri imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(),"hybrid_image.jpg"));
+    private Uri imageUri;
 
     public HybridWebChromeClient(Activity activity) {
         this.activity = activity;
@@ -59,6 +60,8 @@ public class HybridWebChromeClient extends WebChromeClient {
         mFilePathCallback = filePathCallback;
 
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        imageUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), String.format("hybrid_image%d.jpg", new Date().getTime())));
 
         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
 
